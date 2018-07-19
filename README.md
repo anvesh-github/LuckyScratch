@@ -79,7 +79,7 @@ $ git push origin --delete <branchname>
 
 ****CONFIGURATIONS:
 
-git config --global user.email "anvesh.koripali@gmail.com"
+git config --global user.email "xyz@gmail.com"
 
-git config --global user.name "anvesh-github"
+git config --global user.name "xyz-github"
 
