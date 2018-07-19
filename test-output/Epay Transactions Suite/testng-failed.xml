@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Epay Transactions Suite]">
+  <test name="LuckyScratch Transactions Test(failed)">
+    <classes>
+      <class name="com.epay.ls.tests.LuckyScratchTest">
+        <methods>
+          <include name="setUp"/>
+          <include name="initiateTransactions" invocation-numbers="0 1 2"/>
+        </methods>
+      </class> <!-- com.epay.ls.tests.LuckyScratchTest -->
+    </classes>
+  </test> <!-- LuckyScratch Transactions Test(failed) -->
+</suite> <!-- Failed suite [Epay Transactions Suite] -->
