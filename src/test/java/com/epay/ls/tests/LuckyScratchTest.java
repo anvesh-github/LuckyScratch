@@ -26,9 +26,18 @@ public class LuckyScratchTest extends LuckyScratchPage {
 	@Test(dataProvider = "transactionData")
 	public void initiateTransactions(String name, String streetName, String cityName, String stateName, String zipCode,
 			String mobileNo, String currencyID, String cc, String amount) {
+		int intgMethod = Integer.parseInt(properties.getProperty("Integration_Flow_Method"));
 		navigateToPostTransaction();
-		emailID = transactionPayvision3D(name, streetName, cityName, stateName, zipCode, mobileNo, currencyID, cc,
-				amount);
+		switch (intgMethod) {
+
+		case 1:
+			emailID = transactionPayvision3D(name, streetName, cityName, stateName, zipCode, mobileNo, currencyID, cc,
+					amount);
+			break;
+		case 2:
+			emailID = transaction2D(name, streetName, cityName, stateName, zipCode, mobileNo, currencyID, cc, amount);
+			break;
+		}
 		webDriverWait();
 		transDetails = getTransactionDetails();
 		columnNo++;
