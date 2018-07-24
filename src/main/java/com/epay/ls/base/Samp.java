@@ -1,6 +1,8 @@
 package com.epay.ls.base;
 
 import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -131,11 +133,14 @@ public class Samp {
 		selects.selectByValue("000.000.000");
 
 		WebElement otpsubmit = driver.findElement(By.xpath("//input[@name='B2' and @type='submit']"));
-		// otpsubmit.click();
+		otpsubmit.click();
 		// driver.switchTo().alert().accept();
-		// Thread.sleep(4000);
-		// new Robot().keyPress(KeyEvent.VK_ENTER);
-
+		Thread.sleep(4000);
+		new Robot().keyPress(KeyEvent.VK_ENTER);
+		Thread.sleep(10000);
+		WebElement ele = driver.findElement(By.xpath("//td//p"));
+		String s = ele.getText();
+		System.out.println(s);
 	}
 
 }

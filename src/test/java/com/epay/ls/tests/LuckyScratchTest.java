@@ -29,19 +29,20 @@ public class LuckyScratchTest extends LuckyScratchPage {
 		int intgMethod = Integer.parseInt(properties.getProperty("Integration_Flow_Method"));
 		navigateToPostTransaction();
 		switch (intgMethod) {
-
 		case 1:
 			emailID = transactionPayvision3D(name, streetName, cityName, stateName, zipCode, mobileNo, currencyID, cc,
 					amount);
 			break;
 		case 2:
 			emailID = transaction2D(name, streetName, cityName, stateName, zipCode, mobileNo, currencyID, cc, amount);
+			webDriverWait();
+			transDetails = getTransactionDetails();
+			columnNo++;
+			new ExcelUtils().setCellData(columnNo, transDetails, name, currencyID, getErrorDetails(), emailID, cc,
+					amount);
 			break;
 		}
-		webDriverWait();
-		transDetails = getTransactionDetails();
-		columnNo++;
-		new ExcelUtils().setCellData(columnNo, transDetails, name, currencyID, getErrorDetails(), emailID, cc, amount);
+
 	}
 
 	@DataProvider
