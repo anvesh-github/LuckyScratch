@@ -6,7 +6,8 @@
       <class name="com.epay.ls.tests.LuckyScratchTest">
         <methods>
           <include name="setUp"/>
-          <include name="initiateTransactions" invocation-numbers="0 1 2"/>
+          <include name="tearDown"/>
+          <include name="initiateTransactions" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- com.epay.ls.tests.LuckyScratchTest -->
     </classes>

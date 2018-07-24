@@ -1,10 +1,14 @@
 package com.epay.ls.library;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
 
@@ -128,6 +132,26 @@ public class LuckyScratchPage extends SeBase {
 		driver.findElement(By.xpath("//input[@name='Submit']")).click();
 		return getEmail(Name);
 
+	}
+
+	public static String transactionPayvision3D(String Name, String street, String city, String state, String zipCode,
+			String mobile, String currency, String cc, String amounts) {
+		String emailID = null;
+		String successOption = "000.000.000";
+		try {
+			emailID = transaction2D(Name, street, city, state, zipCode, mobile, currency, cc, amounts);
+			WebElement otpselect = driver.findElement(By.xpath("//select[@name='returnCode' and @id='returnCode']"));
+			selectDropdown(otpselect, successOption);
+			WebElement otpsubmit = driver.findElement(By.xpath("//input[@name='B2' and @type='submit']"));
+			otpsubmit.click();
+			webDriverWait();
+			new Robot().keyPress(KeyEvent.VK_ENTER);
+		} catch (NoSuchElementException ne) {
+
+		} catch (AWTException awt) {
+
+		}
+		return emailID;
 	}
 
 	private static String getRemoteAddress() {
