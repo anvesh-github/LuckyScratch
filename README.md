@@ -1,6 +1,6 @@
 # GIT COMMANDS
 
-
+#
 ****DELETING Options
 
 To delete all empty directories, untracked-nonempty directories and untracked files  |  git clean -fd
